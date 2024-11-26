@@ -19,6 +19,7 @@ const Question = ({question}) => {
                     <input type="radio" name={`answer-${question.id}`} className="form-radio text-buzzr-purple"
                            checked={option===question.correctAnswer}
                            readOnly
+                           
 
                            />
                     <span>{option}</span>
