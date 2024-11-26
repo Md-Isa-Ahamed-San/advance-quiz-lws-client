@@ -1,10 +1,12 @@
 import React from 'react';
-
-const QuizAdminCard = ({ title, description, link, variant }) => {
+import {useParams} from "react-router-dom"
+import {NavLink} from "react-router-dom"
+const QuizAdminCard = ({ quizSetId,title, description, link, variant }) => {
     const isCreateNew = variant === 'create-new';
 
+   
     return (
-        <a href={link} className="group">
+        <NavLink to={`/quizSetEntryPage/${quizSetId}`} className="group">
             <div className={`bg-white p-6 rounded-lg shadow-sm border border-gray-200 ${isCreateNew ? 'cursor-pointer' : ''}`}>
                 <div className="text-buzzr-purple mb-4 group-hover:scale-105 transition-all">
                     {isCreateNew ? (
@@ -26,7 +28,7 @@ const QuizAdminCard = ({ title, description, link, variant }) => {
                 <h3 className="font-semibold text-lg mb-2 group-hover:scale-105 transition-all">{title}</h3>
                 <p className="text-gray-600 text-sm group-hover:scale-105 transition-all">{description}</p>
             </div>
-        </a>
+        </NavLink>
     );
 };
 

@@ -18,13 +18,14 @@ const QuizGrid = () => {
   if (error) return <div>Error fetching quizzes</div>;
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {quizzes.map(quiz => (
+            {quizData?.data?.map(quiz => (
                 <QuizAdminCard
                     key={quiz.id}
+                    quizSetId={quiz.id}
                     title={quiz.title}
                     description={quiz.description}
                     link={quiz.link}
-                    variant={quiz.variant}
+                    variant="existing-quiz"
                 />
             ))}
         </div>

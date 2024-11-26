@@ -34,7 +34,7 @@ function App() {
 
             <Route element={<AdminRoutes/>}>
                 <Route element={<QuizSetPage/>} path="/quizSetPage"/>
-                <Route element={<QuizSetEntryPage/>} path="/quizSetEntryPage"/>
+                <Route element={<QuizSetEntryPage/>} path="/quizSetEntryPage/:quizSetId"/>
                 <Route element={<AdminDashboard/>} path="/adminDashboard"/>
             </Route>
             
