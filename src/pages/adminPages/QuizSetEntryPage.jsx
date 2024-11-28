@@ -6,13 +6,16 @@ import QuestionsAnswersGrid from '../../components/Admin/QuestionsAnswersGrid';
 import QuizBuilder from '../../components/Admin/QuizBuilder';
 const QuizSetEntryPage = () => {
     const {quizSetId} = useParams()
+    // console.log("quiz set id: ",quizSetId)
+
     const {useFetchQuiz} = useContext(QuizManageContext)
     const {data:quizData,isLoading,error} = useFetchQuiz(quizSetId)
-    console.log("each quiz data inside quiz set entry page: ",quizData)
+
+    // const {questions,title,description,status,stats} = quizData?.data;
     if(isLoading) return <h1>loading...</h1>
     if(error) return <h1>error...</h1>
-    const {questions,title,description,status,stats} = quizData.data;
-    
+    // console.log("each quiz data inside quiz set entry page: ",quizData)
+    // console.log("quiz set entry page data:",quizData[0])
     return (
         <div className="bg-[#F5F3FF] min-h-screen flex">
         <aside className="hidden md:w-64 bg-primary p-6 md:flex flex-col">
@@ -76,10 +79,10 @@ const QuizSetEntryPage = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-8 lg:gap-12">
                     {/*// <!-- Left Column -->*/}
-                    <QuizBuilder quizData={quizData?.data} />
+                    <QuizBuilder quizData={quizData[0]} />
 
                     {/*// <!-- Right Column -->*/}
-                    <QuestionsAnswersGrid questions={questions}/>
+                    <QuestionsAnswersGrid questions={quizData[0]?.Questions}/>
                 </div>
             </div>
         </div>

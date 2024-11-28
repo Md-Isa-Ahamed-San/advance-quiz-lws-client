@@ -7,7 +7,8 @@ import {Navigate} from "react-router-dom";
     // console.log(auth)
 
     // If user is logged in and is an admin, redirect to admin dashboard
-    if (auth?.user?.role === '1') {
+    if (auth?.user?.role === 'admin') {
+        console.log("inside home roues")
         return <Navigate to="/adminDashboard" replace />;
     }
 

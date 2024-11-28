@@ -12,14 +12,22 @@ const RegisterForm = () => {
   } = useForm();
   const navigate = useNavigate();
   const submitForm = async (formData) => {
+    // Check if the role checkbox is selected
+    if (formData.role) {
+      formData.role = "admin"; 
+    } else {
+      formData.role = "user";
+    }
+  
     console.log(formData);
-
+  
     try {
       let response = await axios.post(
-          `${import.meta.env.VITE_SERVER_BASE_URL}/auth/register`,
-          formData
+        `${import.meta.env.VITE_SERVER_BASE_URL}/auth/register`,
+        formData
       );
-  console.log(response)
+      console.log(response);
+  
       if (response.status === 201) {
         navigate("/login");
       }
@@ -31,6 +39,7 @@ const RegisterForm = () => {
       });
     }
   };
+  
     return (
         <div onSubmit={handleSubmit(submitForm)}
       className="fixed right-0 top-0 w-full h-full lg:w-1/2 flex items-start xl:items-center justify-center p-6 lg:p-8 xl:p-12 overflow-y-auto xl:overflow-hidden">

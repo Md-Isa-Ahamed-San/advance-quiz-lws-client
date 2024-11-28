@@ -4,11 +4,9 @@ import {api} from "../api/api.js"
 import {useAuth} from "./useAuth.js";
 import {AuthContext} from "../contexts/index.js";
 
-
-
 const useAxios = () => {
     const { auth, setAuth } =useContext(AuthContext);
-    // console.log("auth inside useAxios : ",auth)
+    // console.log("auth inside useAxios : ",auth);
 
     useEffect(() => {
         // Add a request interceptor
