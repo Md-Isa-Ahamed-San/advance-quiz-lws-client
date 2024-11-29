@@ -1,3 +1,4 @@
+/* eslint-disable no-extra-boolean-cast */
 import logo from "../../../assets/logo.svg"
 import { useForm } from "react-hook-form"
 
@@ -6,7 +7,6 @@ import {NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useAuth} from "../../../hooks/useAuth.js";
 import {useEffect} from "react";
-import useQuizData from "../../../hooks/useQuizData.js";
 const LoginForm = () => {
   const {setAuth,auth} = useAuth()
   const {
