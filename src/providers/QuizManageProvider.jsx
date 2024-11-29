@@ -13,6 +13,7 @@ const QuizManageProvider = ({ children }) => {
   const [quizPublished,setQuizPublished] = useState(false)
   // Fetch all quiz sets
 
+
 const fetchQuizSets = async () => {
   const { data } = await api.get(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/quizzes`);
 
@@ -21,9 +22,9 @@ const fetchQuizSets = async () => {
 
 const useFetchQuizSets = () =>
   useQuery({
-    queryKey: ['quizSets'], 
-    queryFn: fetchQuizSets, 
-    keepPreviousData: true, 
+    queryKey: ['quizSets'],
+    queryFn: fetchQuizSets,
+    keepPreviousData: true,
   });
 
   // Fetch a single quiz
@@ -54,7 +55,6 @@ const useFetchQuizSets = () =>
         mutationFn: ({ quizSetId, question }) => addQuestion({ quizSetId, question }),
         onSuccess: (_, { quizSetId }) => {
           queryClient.invalidateQueries({ queryKey: ["quizSets", quizSetId] });
-         
         },
         onError: (error) => {
           console.error("Error adding question:", error);
@@ -71,28 +71,25 @@ const useFetchQuizSets = () =>
   const usePatchUpdateQuestion = () => useMutation({
     mutationFn:({questionId,updatedData,quizSetId})=>patchUpdateQuestion({questionId,updatedData,quizSetId}),
     onSuccess: (_, { quizSetId }) => {
-      queryClient.invalidateQueries({ queryKey: ["quizSets", quizSetId] });
-     
+      queryClient.invalidateQueries({queryKey:["quizSets", quizSetId]});
     },
     onError: (error) => {
       console.error("Error updating question:", error);
     },
   });
 
-  // Delete a question
+    // Delete a question
     const deleteQuestion = async ({ questionId }) => {
         const response = await api.delete(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/questions/${questionId}`);
         console.log("question deleted: ", response);
         return response.data;
     };
 
-
     const useDeleteQuestion = () => useMutation({
       mutationFn:({quizId,questionId})=>deleteQuestion({questionId}),
       onSuccess: (_, { quizId }) => {
           queryClient.invalidateQueries({ queryKey: ["quizSets", quizId] });
           // console.log('question deleted')
-
       },
       onError: (error) => {
           console.error("Error adding question:", error);
@@ -101,9 +98,7 @@ const useFetchQuizSets = () =>
 
   // Create a new quiz set
   const createQuizSet = async (data) => {
-
     const { data: responseData } = await api.post(`${import.meta.env.VITE_SERVER_BASE_URL}/admin/quizzes`, data.data);
-
     return responseData;
   };
 

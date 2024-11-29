@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
@@ -7,7 +8,6 @@ const QuizBuilder = ({ quizData }) => {
   const { quizSetId } = useParams();
   const { updateQuestion, setUpdateQuestion } = useContext(QuizManageContext);
   const { useAddQuestion, usePatchUpdateQuestion,useTogglePublishQuizSet,quizPublished } = useContext(QuizManageContext);
-
   const {
     register,
     handleSubmit,

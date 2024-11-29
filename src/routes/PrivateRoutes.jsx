@@ -12,9 +12,11 @@ console.log(auth)
         <>
             {auth?.authToken? (
                 <>
-                        <Header/>
-                        <main className="mx-auto max-w-[1020px] py-8">
-                            <div className="container">
+                        {/* <Header/> */}
+                        <main className="mx-auto min-w-screen">
+                            <div 
+                            // className="container"
+                            >
                                 <Outlet />
                             </div>
                         </main>

@@ -13,9 +13,11 @@ const AdminRoutes = () => {
         <>
             {auth.authToken && auth?.user?.role==='admin' ? (
                 <>
-                    <Header/>
-                    <main className="mx-auto max-w-[1020px] py-8">
-                        <div className="container">
+                   
+                    <main className="mx-auto max-w-screen">
+                        <div
+                        //  className="container"
+                         >
                             <QuizManageProvider>
                             <Outlet />
                             </QuizManageProvider>

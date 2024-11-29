@@ -14,23 +14,25 @@ const QuizResultProvider = ({ children }) => {
         const userQuizResult = attempts?.find(item => item?.user?.id === userId);
 
         if (!userQuizResult) return null;
-
+        console.log("user quiz resul;t: ",userQuizResult)
         const totalQuestions = userQuizResult.correct_answers.length;
-        const { correctCount, totalGotMark } = userQuizResult.submitted_answers.reduce(
+        const { correctCount, totalGotMark,totalMark } = userQuizResult.submitted_answers.reduce(
             (acc, submittedAnswer, idx) => {
                 const isCorrect = submittedAnswer.answer === userQuizResult.correct_answers[idx].answer;
                 return {
+                    totalMark: acc.totalMark + userQuizResult.correct_answers[idx]?.marks,
                     correctCount: acc.correctCount + (isCorrect ? 1 : 0),
                     totalGotMark: acc.totalGotMark + (isCorrect ? userQuizResult.correct_answers[idx]?.marks : 0)
                 };
             },
-            { correctCount: 0, totalGotMark: 0 }
+            { correctCount: 0, totalGotMark: 0,totalMark:0 }
         );
 
         return {
             totalQuestions,
             correctCount,
             wrongAnswers: totalQuestions - correctCount,
+            totalMark,
             totalGotMark,
             userQuizResult
         };

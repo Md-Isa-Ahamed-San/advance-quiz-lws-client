@@ -27,7 +27,7 @@ const QuizAnswers = ({ quizSetId }) => {
 
     return (
         <div className="max-h-screen md:w-1/2 flex items-center justify-center h-full p-8">
-            <div className="h-[calc(100vh-50px)] overflow-y-scroll">
+            <div className="h-[calc(100vh-50px)] overflow-y-scroll min-w-96 mx-auto">
                 <div className="px-4">
                     {processedAnswers.map((quiz, index) => (
                         <div key={quiz.id} className="rounded-lg overflow-hidden shadow-sm mb-4">
@@ -37,7 +37,7 @@ const QuizAnswers = ({ quizSetId }) => {
                                         {index + 1}. {quiz.question}
                                     </h3>
                                 </div>
-                                <div className="space-y-2">
+                                <div className="space-y-2 ">
                                     {quiz.options.map((option, optIndex) => (
                                         <label
                                             key={optIndex}
