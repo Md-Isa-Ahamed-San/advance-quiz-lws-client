@@ -9,7 +9,7 @@ const Leaderboard = ({ leaderboard, title, quizSetId }) => {
 
   return (
     <>
-      <Header />
+     
       <div>
         <h1 className="text-2xl font-bold">Leaderboard</h1>
         <p className="mb-6">{title}</p>

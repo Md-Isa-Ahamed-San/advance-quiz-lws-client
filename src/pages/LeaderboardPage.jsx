@@ -3,6 +3,7 @@ import QuizStats from "../components/Quiz/QuizStats/QuizStats";
 import {useParams} from "react-router-dom";
 import {useAuth} from "../hooks/useAuth.js";
 import useQuizResult from "../hooks/useQuizResult.js";
+import Header from "../components/Common/Header/Header";
 
 const LeaderboardPage = () => {
     const { quizSetId } = useParams();
@@ -18,14 +19,17 @@ const LeaderboardPage = () => {
     const userDetailsWithPosition = getUserLeaderboardPosition(leaderboard, auth?.user?.id);
 
     return (
-        <main className="min-h-[calc(100vh-50px)] flex items-center justify-center">
+        <>
+        <Header />
+        <div className="min-h-[calc(100vh-50px)] flex items-center justify-center">
             <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl overflow-hidden">
                 <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
                     <QuizStats userDetailsWithPosition={userDetailsWithPosition}  quizSetId={quizSetId} />
                     <Leaderboard title={title} leaderboard={leaderboard}/>
                 </div>
             </div>
-        </main>
+        </div>
+        </>
     );
 };
 
