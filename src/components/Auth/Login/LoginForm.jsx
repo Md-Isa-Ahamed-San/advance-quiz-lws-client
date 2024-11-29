@@ -84,12 +84,7 @@ const navigate = useNavigate();
                          placeholder="Password"/>
                 </Field>
               </div>
-              <div className="mb-6 flex gap-2 items-center">
-                <Field htmlFor="admin" label="Register as Admin">
-                  <input {...register("role")} type="checkbox" id="role"
-                         className="px-4 py-3 rounded-lg border border-gray-300"/>
-                </Field>
-              </div>
+             
               <button type="submit" className="w-full bg-primary text-white py-3 rounded-lg mb-4">Sign in</button>
             </form>
             <p>{errors?.root?.random?.message}</p>
